@@ -1,0 +1,602 @@
+/* =======================
+   IMPORT FONT & VARIABLES
+======================== */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&family=Poppins:wght@300;400;600&display=swap');
+
+:root {
+    --primary-color: #FFD700; /* Emas untuk kesan mewah */
+    --secondary-color: #1a1a1a; /* Abu-abu sangat gelap */
+    --bg-color: #0c0c0c; /* Hitam pekat */
+    --text-color: #f0f0f0;
+    --text-secondary: #a0a0a0;
+    --navbar-height: 70px;
+    
+    /* Transisi standar */
+    --transition-speed: 0.3s ease;
+}
+
+/* =======================
+   GLOBAL RESET & STYLES
+======================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.7;
+}
+
+img, video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Roboto Condensed', sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+h1 { font-size: 3.5rem; }
+h2 { font-size: 2.5rem; }
+h3 { font-size: 1.5rem; }
+
+.section-title {
+    text-align: center;
+    margin-bottom: 3.5rem;
+    color: var(--primary-color);
+    letter-spacing: 1.5px;
+}
+
+section {
+    padding: 100px 7%;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: #000;
+    padding: 12px 30px;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: var(--transition-speed);
+    border: 2px solid var(--primary-color);
+    text-transform: uppercase;
+}
+
+.cta-button:hover {
+    background-color: transparent;
+    color: var(--primary-color);
+}
+
+/* =======================
+   HEADER & NAVBAR
+======================== */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(12, 12, 12, 0.85); /* Latar belakang transparan */
+    backdrop-filter: blur(10px); /* Efek blur */
+    border-bottom: 1px solid #222;
+    transition: var(--transition-speed);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 7%;
+    height: var(--navbar-height);
+}
+
+.logo {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 2.2rem;
+}
+
+.nav-links a {
+    color: var(--text-color);
+    font-size: 1rem;
+    font-weight: 400;
+    position: relative;
+    padding: 5px 0;
+    transition: var(--transition-speed);
+}
+
+/* Animasi garis bawah menu */
+.nav-links a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--primary-color);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+.nav-extra {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.nav-extra a {
+    color: var(--text-color);
+    font-size: 1.3rem;
+    transition: var(--transition-speed);
+}
+.nav-extra a:hover {
+    color: var(--primary-color);
+}
+
+.location-button-mobile {
+    display: none; /* Sembunyikan di desktop */
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-color);
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+/* =======================
+   HERO SECTION
+======================== */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    color: #fff;
+    padding: 0 7%;
+    overflow: hidden;
+}
+
+.hero-video-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+}
+.hero-video-wrapper img,
+.hero-video-wrapper video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.5)); /* Overlay lebih gelap */
+    z-index: -1;
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
+}
+
+.hero p {
+    font-size: 1.25rem;
+    margin-bottom: 2.5rem;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.7);
+    color: var(--text-secondary);
+}
+
+/* =======================
+   ABOUT SECTION
+======================== */
+.about-section {
+    background-color: var(--secondary-color);
+}
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 1.1rem;
+}
+.about-content strong {
+    color: var(--primary-color);
+}
+
+/* =======================
+   PRODUK SECTION
+======================== */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+}
+
+.product-card {
+    background-color: var(--secondary-color);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    /* Animasi Kartu Produk */
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.product-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 12px 25px rgba(255, 215, 0, 0.15); /* Bayangan emas saat hover */
+}
+
+.product-card img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+.product-card:hover img {
+    transform: scale(1.05); /* Animasi zoom gambar */
+}
+
+.product-info {
+    padding: 1.5rem;
+}
+
+.product-info h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.product-info p {
+    color: var(--text-secondary);
+    margin-bottom: 1.2rem;
+    min-height: 50px;
+}
+
+.product-info .price {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+/* =======================
+   REVIEW SECTION
+======================== */
+.review-section {
+    background-color: var(--secondary-color);
+}
+
+.review-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.review-card {
+    background-color: var(--bg-color);
+    padding: 2rem;
+    border-radius: 8px;
+    border-bottom: 4px solid var(--primary-color);
+}
+
+.review-card .stars {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.review-card p {
+    font-style: italic;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+.review-card h4 {
+    font-family: 'Poppins', sans-serif;
+    text-transform: none;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+/* =======================
+   Q&A SECTION (Accordion)
+======================== */
+.qa-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+details {
+    background-color: var(--secondary-color);
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    border: 1px solid #333;
+}
+
+summary {
+    padding: 1.5rem;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--text-color);
+    list-style: none; /* Hapus panah default */
+    position: relative;
+    transition: var(--transition-speed);
+}
+summary:hover {
+    color: var(--primary-color);
+}
+
+/* Animasi panah accordion custom */
+summary::after {
+    content: '\f078'; /* Ikon panah bawah Font Awesome */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    right: 1.5rem;
+    color: var(--primary-color);
+    transition: transform 0.3s ease;
+}
+
+details[open] summary::after {
+    transform: rotate(180deg);
+}
+
+details p {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+/* =======================
+   KONTAK SECTION
+======================== */
+.kontak-section {
+    background-color: var(--secondary-color);
+}
+
+.kontak-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: flex-start;
+}
+
+.kontak-info h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+.kontak-info p {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+}
+
+.kontak-info i {
+    color: var(--primary-color);
+    width: 25px;
+    margin-right: 10px;
+}
+
+.kontak-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.kontak-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.kontak-form input,
+.kontak-form textarea {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--bg-color);
+    border: 1px solid #333;
+    border-radius: 5px;
+    color: var(--text-color);
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    transition: var(--transition-speed);
+}
+
+.kontak-form input:focus,
+.kontak-form textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+.kontak-form .cta-button {
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+/* =======================
+   FOOTER
+======================== */
+footer {
+    background-color: #000; /* Footer lebih gelap */
+    text-align: center;
+    padding: 3rem 7%;
+    border-top: 1px solid #222;
+}
+
+.social-icons {
+    margin-bottom: 1.5rem;
+}
+
+.social-icons a {
+    font-size: 1.8rem;
+    color: var(--text-secondary);
+    margin: 0 1rem;
+    transition: var(--transition-speed);
+}
+
+.social-icons a:hover {
+    color: var(--primary-color);
+    transform: translateY(-3px); /* Animasi ikon sosmed */
+}
+
+footer p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+/* =======================
+   ANIMASI FADE-IN SAAT SCROLL
+======================== */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transition-delay: 0.2s;
+}
+
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Delay animasi untuk hero content */
+.hero-content p { transition-delay: 0.4s; }
+.hero-content .cta-button { transition-delay: 0.6s; }
+/* Delay untuk kartu produk */
+.product-card:nth-child(2) { transition-delay: 0.4s; }
+.product-card:nth-child(3) { transition-delay: 0.6s; }
+
+
+/* =======================
+   RESPONSIVE (MOBILE)
+======================== */
+@media (max-width: 992px) {
+    /* Ukuran Tablet */
+    html {
+        font-size: 15px;
+    }
+    .kontak-wrapper {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Ukuran Mobile */
+    h1 { font-size: 2.8rem; }
+    h2 { font-size: 2rem; }
+    
+    section {
+        padding: 80px 5%;
+    }
+    nav {
+        padding: 0 5%;
+    }
+
+    /* Tampilkan Hamburger & Tombol Lokasi Mobile */
+    .hamburger {
+        display: block;
+        z-index: 1001;
+    }
+    .location-button-mobile {
+        display: inline-block; /* Tampilkan tombol lokasi */
+        z-index: 1001;
+    }
+
+    /* Animasi Hamburger -> X */
+    .hamburger.toggle .line1 {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+    .hamburger.toggle .line2 {
+        opacity: 0;
+    }
+    .hamburger.toggle .line3 {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    /* Menu Mobile */
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Mulai dari luar layar */
+        width: 60%;
+        min-width: 250px;
+        height: 100vh;
+        background-color: var(--secondary-color);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: right 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+        z-index: 1000;
+        box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+    }
+
+    .nav-links.nav-active {
+        right: 0; /* Geser menu ke dalam layar */
+    }
+
+    .nav-links li {
+        margin: 1.5rem 0;
+    }
+
+    .nav-links a {
+        font-size: 1.3rem;
+    }
+}
